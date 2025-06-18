@@ -1,0 +1,770 @@
+
+
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Elekrik s.r.o.</title>
+    <link rel="icon" type="image/x-icon" href="imgs/Logo.png">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap');
+        
+        body {
+            font-family: 'Montserrat', sans-serif;
+            scroll-behavior: smooth;
+        }
+        
+        .hero-gradient {
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+        }
+        
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+        }
+        
+        .team-card:hover img {
+            transform: scale(1.03);
+        }
+        
+        .logo-placeholder {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 1.5rem;
+            color: #fff;
+        }
+        
+        .nav-link {
+            position: relative;
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -2px;
+            left: 0;
+            background-color: #3b82f6;
+            transition: width 0.3s ease;
+        }
+        
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        
+        .product-card {
+            transition: all 0.3s ease;
+        }
+        
+        .product-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .btn-primary {
+            transition: all 0.3s ease;
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 6px -1px rgba(59, 130, 246, 0.4);
+        }
+        
+        .scroll-to-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 99;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .scroll-to-top.visible {
+            opacity: 1;
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <header class="sticky top-0 z-50 bg-white shadow-md">
+        <div class="container mx-auto px-4 py-3">
+            <div class="flex justify-between items-center">
+                <div class="flex items-center space-x-4">
+                    <div class="logo-placeholder bg-blue-600 h-10 w-32 rounded">
+                        ELEKRIK
+                    </div>
+                    <nav class="hidden md:flex space-x-6">
+                        <a href="#uvod" class="nav-link text-gray-700 hover:text-blue-600 font-medium">Úvod</a>
+                        <a href="#sluzby" class="nav-link text-gray-700 hover:text-blue-600 font-medium">Služby</a>
+                        <a href="#o-nas" class="nav-link text-gray-700 hover:text-blue-600 font-medium">O nás</a>
+                        <a href="#tym" class="nav-link text-gray-700 hover:text-blue-600 font-medium">Náš tým</a>
+                        <a href="#eshop" class="nav-link text-gray-700 hover:text-blue-600 font-medium">E-shop</a>
+                        <a href="#kontakt" class="nav-link text-gray-700 hover:text-blue-600 font-medium">Kontakt</a>
+                    </nav>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <a href="#eshop" class="hidden md:flex items-center text-gray-700 hover:text-blue-600">
+                        <i class="fas fa-shopping-cart mr-2"></i>
+                        <span>Košík (0)</span>
+                    </a>
+                    <a href="#kontakt" class="hidden md:block bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-md font-medium transition duration-300">
+                        Kontaktujte nás
+                    </a>
+                    <button id="mobile-menu-button" class="md:hidden text-gray-700 focus:outline-none">
+                        <i class="fas fa-bars text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+            
+            <div id="mobile-menu" class="md:hidden hidden pt-4 pb-2">
+                <nav class="flex flex-col space-y-3">
+                    <a href="#uvod" class="text-gray-700 hover:text-blue-600 font-medium">Úvod</a>
+                    <a href="#sluzby" class="text-gray-700 hover:text-blue-600 font-medium">Služby</a>
+                    <a href="#o-nas" class="text-gray-700 hover:text-blue-600 font-medium">O nás</a>
+                    <a href="#tym" class="text-gray-700 hover:text-blue-600 font-medium">Náš tým</a>
+                    <a href="#eshop" class="text-gray-700 hover:text-blue-600 font-medium">E-shop</a>
+                    <a href="#kontakt" class="text-gray-700 hover:text-blue-600 font-medium">Kontakt</a>
+                    <a href="#eshop" class="flex items-center text-gray-700 hover:text-blue-600">
+                        <i class="fas fa-shopping-cart mr-2"></i>
+                        <span>Košík (0)</span>
+                    </a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <section id="uvod" class="hero-gradient text-white">
+        <div class="container mx-auto px-4 py-20 md:py-32">
+            <div class="flex flex-col md:flex-row items-center">
+                <div class="md:w-1/2 mb-10 md:mb-0">
+                    <h1 class="text-4xl md:text-5xl font-bold mb-6">Elektroinstalace s profesionálním přístupem</h1>
+                    <p class="text-lg md:text-xl mb-8 text-gray-300">Komplexní elektroinstalační služby pro domácnosti, firmy i průmyslové objekty. Spojujeme zkušenosti a kreativitu pro vaše projekty.</p>
+                    <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
+                        <a href="#sluzby" class="btn-primary bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-md font-medium text-center">
+                            Naše služby
+                        </a>
+                        <a href="#kontakt" class="btn-primary bg-transparent border-2 border-white hover:bg-white hover:text-blue-900 text-white px-6 py-3 rounded-md font-medium text-center transition duration-300">
+                            Kontaktujte nás
+                        </a>
+                    </div>
+                </div>
+                <div class="md:w-1/2 flex justify-center">
+                    <div class="relative">
+                        <img src="imgs/Logo.png" class="w-full max-w-lg rounded-xl shadow-lg" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="sluzby" class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">Naše služby</h2>
+                <p class="text-lg text-gray-600 max-w-3xl mx-auto">Nabízíme široké portfolio služeb od drobných oprav až po rozsáhlé rekonstrukce elektroinstalací.</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="service-card bg-white rounded-lg shadow-lg p-6 transition duration-300">
+                    <div class="bg-blue-100 text-blue-600 w-16 h-16 rounded-full flex items-center justify-center mb-6 mx-auto">
+                        <i class="fas fa-bolt text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 text-center">Komplexní elektroinstalační práce</h3>
+                    <p class="text-gray-600 text-center">Od drobných oprav až po rozsáhlé rekonstrukce elektroinstalací pro domácnosti i firmy.</p>
+                </div>
+                
+                <div class="service-card bg-white rounded-lg shadow-lg p-6 transition duration-300">
+                    <div class="bg-blue-100 text-blue-600 w-16 h-16 rounded-full flex items-center justify-center mb-6 mx-auto">
+                        <i class="fas fa-clipboard-check text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 text-center">Revize a kontroly elektrozařízení</h3>
+                    <p class="text-gray-600 text-center">Zajištění bezpečnosti a souladu s platnými normami pro všechna elektrozařízení.</p>
+                </div>
+                
+                <div class="service-card bg-white rounded-lg shadow-lg p-6 transition duration-300">
+                    <div class="bg-blue-100 text-blue-600 w-16 h-16 rounded-full flex items-center justify-center mb-6 mx-auto">
+                        <i class="fas fa-solar-panel text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 text-center">Fotovoltaické systémy</h3>
+                    <p class="text-gray-600 text-center">Instalace a servis fotovoltaických systémů pro přechod na obnovitelné zdroje energie.</p>
+                </div>
+                
+                <div class="service-card bg-white rounded-lg shadow-lg p-6 transition duration-300">
+                    <div class="bg-blue-100 text-blue-600 w-16 h-16 rounded-full flex items-center justify-center mb-6 mx-auto">
+                        <i class="fas fa-charging-station text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 text-center">Nabíjecí stanice pro elektromobily</h3>
+                    <p class="text-gray-600 text-center">Projektování a výstavba nabíjecích stanic pro elektromobily pro domácnosti i firmy.</p>
+                </div>
+                
+                <div class="service-card bg-white rounded-lg shadow-lg p-6 transition duration-300">
+                    <div class="bg-blue-100 text-blue-600 w-16 h-16 rounded-full flex items-center justify-center mb-6 mx-auto">
+                        <i class="fas fa-shopping-cart text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 text-center">E-shop s elektromateriálem</h3>
+                    <p class="text-gray-600 text-center">Nabídka kvalitního materiálu pro profesionály i domácí kutily za skvělé ceny.</p>
+                </div>
+                
+                <div class="service-card bg-white rounded-lg shadow-lg p-6 transition duration-300">
+                    <div class="bg-blue-100 text-blue-600 w-16 h-16 rounded-full flex items-center justify-center mb-6 mx-auto">
+                        <i class="fas fa-home text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 text-center">Inteligentní domácnosti</h3>
+                    <p class="text-gray-600 text-center">Instalace a nastavení systémů pro inteligentní domácnosti a moderní technologie.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="o-nas" class="py-16 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row items-center">
+                <div class="md:w-1/2 mb-10 md:mb-0">
+                    <div class="relative">
+                        <img src="imgs/Logo.png" class="w-full max-w-lg mx-auto rounded-xl">
+                    </div>
+                </div>
+                <div class="md:w-1/2 md:pl-10">
+                    <h2 class="text-3xl md:text-4xl font-bold mb-6">O nás</h2>
+                    <p class="text-gray-600 mb-6">
+                        Elekrik není jen firma, ale příběh dvou kluků, Jakuba Macka a Denise Drexlera, kteří se rozhodli, že elektroinstalace můžou být jinak – efektivní, spolehlivé a trošku „punkové".
+                    </p>
+                    <p class="text-gray-600 mb-6">
+                        Naše profesionální, česká firma se zaměřuje na komplexní elektroinstalační služby pro domácnosti, firmy i průmyslové objekty. Spojení zkušeností a kreativity nám umožnilo stát se spolehlivým partnerem pro široké spektrum elektroinstalačních prací, a to jak na malých, tak na rozsáhlých projektech.
+                    </p>
+                    <p class="text-gray-600 mb-8">
+                        Na trhu se profilujeme jako tým, který poskytuje elektroinstalační služby na vysoké profesionální úrovni, ale s trochou humoru a nadhledu, který z nás dělá něco víc než jen běžnou firmu.
+                    </p>
+                    <div class="flex flex-wrap gap-4">
+                        <div class="bg-white rounded-lg shadow-md p-4 flex items-center">
+                            <div class="bg-blue-100 text-blue-600 w-12 h-12 rounded-full flex items-center justify-center mr-4">
+                                <i class="fas fa-check text-xl"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold">Kvalita</h4>
+                                <p class="text-sm text-gray-600">Důraz na kvalitu provedení</p>
+                            </div>
+                        </div>
+                        <div class="bg-white rounded-lg shadow-md p-4 flex items-center">
+                            <div class="bg-blue-100 text-blue-600 w-12 h-12 rounded-full flex items-center justify-center mr-4">
+                                <i class="fas fa-graduation-cap text-xl"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold">Odbornost</h4>
+                                <p class="text-sm text-gray-600">Pravidelná školení</p>
+                            </div>
+                        </div>
+                        <div class="bg-white rounded-lg shadow-md p-4 flex items-center">
+                            <div class="bg-blue-100 text-blue-600 w-12 h-12 rounded-full flex items-center justify-center mr-4">
+                                <i class="fas fa-clock text-xl"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold">Dostupnost</h4>
+                                <p class="text-sm text-gray-600">Nonstop linka</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="tym" class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">Kdo za tím stojí?</h2>
+                <p class="text-lg text-gray-600 max-w-3xl mx-auto">Seznamte se s našimi zakladateli, kteří stojí za úspěchem firmy Elekrik.</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-10 max-w-4xl mx-auto">
+                <div class="team-card bg-white rounded-lg shadow-lg overflow-hidden">
+                    <div class="h-64 overflow-hidden">
+                        <img src="imgs/Macek.png" class="w-full h-full">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">Jakub Macek</h3>
+                        <p class="text-blue-600 mb-4">Zakladatel a vizionář</p>
+                        <p class="text-gray-600 mb-4">
+                            Zakladatel a vizionář, který má za sebou letitou praxi v elektroinstalacích. Jakub je ten, kdo vždy myslí na detaily – od nejkvalitnějších materiálů až po přesné provedení práce.
+                        </p>
+                        <p class="text-gray-600 italic">„Pokud to není dokonalé, tak to není hotové."</p>
+                    </div>
+                </div>
+                
+                <div class="team-card bg-white rounded-lg shadow-lg overflow-hidden">
+                    <div class="h-64 overflow-hidden">
+                        <img src="imgs/ja.png" class="w-full h-full">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">Denis Drexler</h3>
+                        <p class="text-blue-600 mb-4">Spoluzakladatel, technický mastermind</p>
+                        <p class="text-gray-600 mb-4">
+                            Spoluzakladatel, technický mastermind a odborník na elektroinstalační revize a bezpečnost. Denis je garantem toho, že všechno, co se postaví, bude fungovat bez problémů.
+                        </p>
+                        <p class="text-gray-600 italic">„Revize nikdy nekončí"</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="eshop" class="py-16 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">E-shop s elektromateriálem</h2>
+                <p class="text-lg text-gray-600 max-w-3xl mx-auto">Nabídka kvalitního materiálu pro profesionály i domácí kutily za skvělé ceny.</p>
+            </div>
+            
+            <div class="flex flex-wrap justify-center gap-4 mb-12">
+                <button class="category-btn bg-blue-600 text-white px-4 py-2 rounded-md">Všechny produkty</button>
+                <button class="category-btn bg-white text-gray-700 hover:bg-blue-100 px-4 py-2 rounded-md">Kabely a vodiče</button>
+                <button class="category-btn bg-white text-gray-700 hover:bg-blue-100 px-4 py-2 rounded-md">Jističe a chrániče</button>
+                <button class="category-btn bg-white text-gray-700 hover:bg-blue-100 px-4 py-2 rounded-md">Rozvaděče</button>
+                <button class="category-btn bg-white text-gray-700 hover:bg-blue-100 px-4 py-2 rounded-md">Osvětlení</button>
+                <button class="category-btn bg-white text-gray-700 hover:bg-blue-100 px-4 py-2 rounded-md">Nářadí</button>
+            </div>
+            
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+                <div class="product-card bg-white rounded-lg shadow-md overflow-hidden">
+                    <div class="h-48 bg-gray-100 flex items-center justify-center p-4">
+                        <svg class="w-32 h-32" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                            <rect x="20" y="20" width="60" height="60" rx="5" fill="#3b82f6" opacity="0.7" />
+                            <circle cx="50" cy="50" r="15" fill="#fff" />
+                            <path d="M40,40 L60,60 M40,60 L60,40" stroke="#3b82f6" stroke-width="4" />
+                        </svg>
+                    </div>
+                    <div class="p-4">
+                        <h3 class="font-bold mb-2">Jistič 16A 3-fázový</h3>
+                        <p class="text-gray-600 text-sm mb-4">Kvalitní jistič pro domácí i průmyslové použití.</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-blue-600 font-bold">499 Kč</span>
+                            <button class="bg-blue-600 hover:bg-blue-700 text-white px-3 py-1 rounded-md text-sm">
+                                Do košíku
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="product-card bg-white rounded-lg shadow-md overflow-hidden">
+                    <div class="h-48 bg-gray-100 flex items-center justify-center p-4">
+                        <svg class="w-32 h-32" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                            <rect x="10" y="40" width="80" height="20" fill="#3b82f6" opacity="0.7" />
+                            <circle cx="20" cy="50" r="5" fill="#fff" />
+                            <circle cx="80" cy="50" r="5" fill="#fff" />
+                        </svg>
+                    </div>
+                    <div class="p-4">
+                        <h3 class="font-bold mb-2">Kabel CYKY 3x2,5</h3>
+                        <p class="text-gray-600 text-sm mb-4">Měděný kabel pro pevné uložení, délka 100m.</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-blue-600 font-bold">1 299 Kč</span>
+                            <button class="bg-blue-600 hover:bg-blue-700 text-white px-3 py-1 rounded-md text-sm">
+                                Do košíku
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="product-card bg-white rounded-lg shadow-md overflow-hidden">
+                    <div class="h-48 bg-gray-100 flex items-center justify-center p-4">
+                        <svg class="w-32 h-32" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="50" cy="30" r="20" fill="#3b82f6" opacity="0.7" />
+                            <rect x="45" y="50" width="10" height="30" fill="#3b82f6" opacity="0.7" />
+                            <rect x="30" y="80" width="40" height="5" fill="#3b82f6" opacity="0.7" />
+                        </svg>
+                    </div>
+                    <div class="p-4">
+                        <h3 class="font-bold mb-2">LED žárovka 10W E27</h3>
+                        <p class="text-gray-600 text-sm mb-4">Úsporná LED žárovka s teplým bílým světlem.</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-blue-600 font-bold">89 Kč</span>
+                            <button class="bg-blue-600 hover:bg-blue-700 text-white px-3 py-1 rounded-md text-sm">
+                                Do košíku
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="product-card bg-white rounded-lg shadow-md overflow-hidden">
+                    <div class="h-48 bg-gray-100 flex items-center justify-center p-4">
+                        <svg class="w-32 h-32" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                            <rect x="20" y="30" width="60" height="40" rx="5" fill="#3b82f6" opacity="0.7" />
+                            <rect x="30" y="40" width="40" height="20" rx="2" fill="#fff" />
+                            <circle cx="35" cy="50" r="3" fill="#3b82f6" />
+                            <circle cx="45" cy="50" r="3" fill="#3b82f6" />
+                            <circle cx="55" cy="50" r="3" fill="#3b82f6" />
+                            <circle cx="65" cy="50" r="3" fill="#3b82f6" />
+                        </svg>
+                    </div>
+                    <div class="p-4">
+                        <h3 class="font-bold mb-2">Rozvaděč 24 modulů</h3>
+                        <p class="text-gray-600 text-sm mb-4">Plastový rozvaděč pro montáž na zeď, IP40.</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-blue-600 font-bold">899 Kč</span>
+                            <button class="bg-blue-600 hover:bg-blue-700 text-white px-3 py-1 rounded-md text-sm">
+                                Do košíku
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="product-card bg-white rounded-lg shadow-md overflow-hidden">
+                    <div class="h-48 bg-gray-100 flex items-center justify-center p-4">
+                        <svg class="w-32 h-32" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M30,70 L70,70 L70,40 L50,20 L30,40 Z" fill="#3b82f6" opacity="0.7" />
+                            <rect x="45" y="70" width="10" height="15" fill="#3b82f6" opacity="0.7" />
+                        </svg>
+                    </div>
+                    <div class="p-4">
+                        <h3 class="font-bold mb-2">Zásuvka dvojitá</h3>
+                        <p class="text-gray-600 text-sm mb-4">Bílá dvojzásuvka pro montáž pod omítku.</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-blue-600 font-bold">149 Kč</span>
+                            <button class="bg-blue-600 hover:bg-blue-700 text-white px-3 py-1 rounded-md text-sm">
+                                Do košíku
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="product-card bg-white rounded-lg shadow-md overflow-hidden">
+                    <div class="h-48 bg-gray-100 flex items-center justify-center p-4">
+                        <svg class="w-32 h-32" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                            <rect x="20" y="40" width="60" height="20" rx="10" fill="#3b82f6" opacity="0.7" />
+                            <circle cx="30" cy="50" r="5" fill="#fff" />
+                            <rect x="40" y="45" width="30" height="10" fill="#fff" />
+                        </svg>
+                    </div>
+                    <div class="p-4">
+                        <h3 class="font-bold mb-2">Proudový chránič 25A</h3>
+                        <p class="text-gray-600 text-sm mb-4">4-pólový proudový chránič 30mA.</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-blue-600 font-bold">799 Kč</span>
+                            <button class="bg-blue-600 hover:bg-blue-700 text-white px-3 py-1 rounded-md text-sm">
+                                Do košíku
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="product-card bg-white rounded-lg shadow-md overflow-hidden">
+                    <div class="h-48 bg-gray-100 flex items-center justify-center p-4">
+                        <svg class="w-32 h-32" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M20,50 L80,50 M50,20 L50,80" stroke="#3b82f6" stroke-width="8" stroke-linecap="round" />
+                            <circle cx="50" cy="50" r="15" fill="#3b82f6" opacity="0.7" />
+                        </svg>
+                    </div>
+                    <div class="p-4">
+                        <h3 class="font-bold mb-2">Šroubovák sada 6ks</h3>
+                        <p class="text-gray-600 text-sm mb-4">Sada izolovaných šroubováků pro elektrikáře.</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-blue-600 font-bold">599 Kč</span>
+                            <button class="bg-blue-600 hover:bg-blue-700 text-white px-3 py-1 rounded-md text-sm">
+                                Do košíku
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="product-card bg-white rounded-lg shadow-md overflow-hidden">
+                    <div class="h-48 bg-gray-100 flex items-center justify-center p-4">
+                        <svg class="w-32 h-32" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                            <rect x="30" y="30" width="40" height="40" fill="#3b82f6" opacity="0.7" />
+                            <circle cx="50" cy="50" r="10" fill="#fff" />
+                            <path d="M50,40 L50,50 L60,50" stroke="#3b82f6" stroke-width="2" fill="none" />
+                        </svg>
+                    </div>
+                    <div class="p-4">
+                        <h3 class="font-bold mb-2">Digitální multimetr</h3>
+                        <p class="text-gray-600 text-sm mb-4">Profesionální multimetr pro měření napětí, proudu a odporu.</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-blue-600 font-bold">1 499 Kč</span>
+                            <button class="bg-blue-600 hover:bg-blue-700 text-white px-3 py-1 rounded-md text-sm">
+                                Do košíku
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center mt-12">
+                <a href="#" class="btn-primary inline-block bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-md font-medium">
+                    Více produktů brzy
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <section id="kontakt" class="py-16 bg-blue-900 text-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">Kontaktujte nás</h2>
+                <p class="text-lg text-blue-200 max-w-3xl mx-auto">Máte dotaz nebo potřebujete pomoc s vaším projektem? Neváhejte nás kontaktovat.</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
+                <div>
+                    <h3 class="text-xl font-bold mb-6">Kontaktní informace</h3>
+                    
+                    <div class="space-y-6">
+                        <div class="flex items-start">
+                            <div class="bg-blue-800 text-white w-12 h-12 rounded-full flex items-center justify-center mr-4 shrink-0">
+                                <i class="fas fa-map-marker-alt text-xl"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold mb-1">Adresa</h4>
+                                <p class="text-blue-200">Jaselská 826, 280 02  Kolín</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start">
+                            <div class="bg-blue-800 text-white w-12 h-12 rounded-full flex items-center justify-center mr-4 shrink-0">
+                                <i class="fas fa-phone text-xl"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold mb-1">Nonstop linka</h4>
+                                <p class="text-blue-200">+420 123 456 789</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start">
+                            <div class="bg-blue-800 text-white w-12 h-12 rounded-full flex items-center justify-center mr-4 shrink-0">
+                                <i class="fas fa-envelope text-xl"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold mb-1">Email</h4>
+                                <p class="text-blue-200">elekrik@denisdrexler.eu</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start">
+                            <div class="bg-blue-800 text-white w-12 h-12 rounded-full flex items-center justify-center mr-4 shrink-0">
+                                <i class="fas fa-clock text-xl"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold mb-1">Otevírací doba</h4>
+                                <p class="text-blue-200">Po-Pá: 8:00 - 17:00<br>So: 9:00 - 12:00<br>Ne: Zavřeno</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-8">
+                        <h4 class="font-bold mb-4">Sledujte nás</h4>
+                        <div class="flex space-x-4">
+                            <a href="#" class="bg-blue-800 hover:bg-blue-700 w-10 h-10 rounded-full flex items-center justify-center transition duration-300">
+                                <i class="fab fa-facebook-f"></i>
+                            </a>
+                            <a href="#" class="bg-blue-800 hover:bg-blue-700 w-10 h-10 rounded-full flex items-center justify-center transition duration-300">
+                                <i class="fab fa-instagram"></i>
+                            </a>
+                            <a href="#" class="bg-blue-800 hover:bg-blue-700 w-10 h-10 rounded-full flex items-center justify-center transition duration-300">
+                                <i class="fab fa-linkedin-in"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div>
+                    <h3 class="text-xl font-bold mb-6">Napište nám</h3>
+                    
+                    <form id="contact-form" class="space-y-4">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div>
+                                <label for="name" class="block mb-1 text-sm">Jméno</label>
+                                <input type="text" id="name" class="w-full px-4 py-2 rounded-md bg-blue-800 border border-blue-700 text-white placeholder-blue-300 focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Vaše jméno">
+                            </div>
+                            <div>
+                                <label for="email" class="block mb-1 text-sm">Email</label>
+                                <input type="email" id="email" class="w-full px-4 py-2 rounded-md bg-blue-800 border border-blue-700 text-white placeholder-blue-300 focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Váš email">
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <label for="subject" class="block mb-1 text-sm">Předmět</label>
+                            <input type="text" id="subject" class="w-full px-4 py-2 rounded-md bg-blue-800 border border-blue-700 text-white placeholder-blue-300 focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Předmět zprávy">
+                        </div>
+                        
+                        <div>
+                            <label for="message" class="block mb-1 text-sm">Zpráva</label>
+                            <textarea id="message" rows="5" class="w-full px-4 py-2 rounded-md bg-blue-800 border border-blue-700 text-white placeholder-blue-300 focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Vaše zpráva..."></textarea>
+                        </div>
+                        
+                        <div>
+                            <button type="submit" class="btn-primary bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-md font-medium w-full">
+                                Odeslat zprávu
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-gray-900 text-white py-10">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <div class="logo-placeholder bg-blue-600 h-10 w-32 rounded mb-4">
+                        ELEKRIK
+                    </div>
+                    <p class="text-gray-400 mb-4">
+                        Profesionální elektroinstalační služby pro domácnosti, firmy i průmyslové objekty.
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-white">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-bold mb-4">Rychlé odkazy</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#uvod" class="text-gray-400 hover:text-white">Úvod</a></li>
+                        <li><a href="#sluzby" class="text-gray-400 hover:text-white">Služby</a></li>
+                        <li><a href="#o-nas" class="text-gray-400 hover:text-white">O nás</a></li>
+                        <li><a href="#tym" class="text-gray-400 hover:text-white">Náš tým</a></li>
+                        <li><a href="#eshop" class="text-gray-400 hover:text-white">E-shop</a></li>
+                        <li><a href="#kontakt" class="text-gray-400 hover:text-white">Kontakt</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-bold mb-4">Služby</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white">Elektroinstalace</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Revize</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Fotovoltaika</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Nabíjecí stanice</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Inteligentní domácnosti</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-bold mb-4">Kontakt</h4>
+                    <ul class="space-y-2">
+                        <li class="flex items-start">
+                            <i class="fas fa-map-marker-alt mt-1 mr-2 text-blue-500"></i>
+                            <span class="text-gray-400">Jaselská 826, 280 02  Kolín</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-phone mt-1 mr-2 text-blue-500"></i>
+                            <span class="text-gray-400">+420 123 456 789</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-envelope mt-1 mr-2 text-blue-500"></i>
+                            <span class="text-gray-400">elekrik@denisdrexler.eu</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 mt-8 pt-8 flex flex-col md:flex-row justify-between items-center">
+                <p class="text-gray-400 text-sm mb-4 md:mb-0">
+                    &copy; 2025 Elekrik s.r.o. Všechna práva vyhrazena.
+                </p>
+                <div class="flex space-x-4">
+                    <a href="#" class="text-gray-400 hover:text-white text-sm">Obchodní podmínky</a>
+                    <a href="#" class="text-gray-400 hover:text-white text-sm">Ochrana osobních údajů</a>
+                    <a href="#" class="text-gray-400 hover:text-white text-sm">Cookies</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <button id="scroll-to-top" class="scroll-to-top bg-blue-600 hover:bg-blue-700 text-white w-12 h-12 rounded-full flex items-center justify-center shadow-lg">
+        <i class="fas fa-chevron-up"></i>
+    </button>
+
+    <script>
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+        
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                    
+                    if (!mobileMenu.classList.contains('hidden')) {
+                        mobileMenu.classList.add('hidden');
+                    }
+                }
+            });
+        });
+        
+        const scrollToTopButton = document.getElementById('scroll-to-top');
+        
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                scrollToTopButton.classList.add('visible');
+            } else {
+                scrollToTopButton.classList.remove('visible');
+            }
+        });
+        
+        scrollToTopButton.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+        
+        const categoryButtons = document.querySelectorAll('.category-btn');
+        
+        categoryButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                categoryButtons.forEach(btn => {
+                    btn.classList.remove('bg-blue-600', 'text-white');
+                    btn.classList.add('bg-white', 'text-gray-700', 'hover:bg-blue-100');
+                });
+                
+                button.classList.remove('bg-white', 'text-gray-700', 'hover:bg-blue-100');
+                button.classList.add('bg-blue-600', 'text-white');
+            });
+        });
+        
+        const contactForm = document.getElementById('contact-form');
+        
+        contactForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const subject = document.getElementById('subject').value;
+            const message = document.getElementById('message').value;
+            
+            // Simple validation
+            if (!name || !email || !subject || !message) {
+                alert('Prosím vyplňte všechna pole.');
+                return;
+            }
+            
+            alert('Děkujeme za vaši zprávu! Budeme vás kontaktovat co nejdříve.');
+            
+            contactForm.reset();
+        });
+    </script>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'951c09cea00e6053',t:'MTc1MDI2MjgzMi4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
